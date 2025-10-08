@@ -1,0 +1,36 @@
+<div style="max-width:800px; margin:20px auto; font-family:Arial, sans-serif;">
+  <h2>Distancia entre dos puntos</h2>
+
+  <form [formGroup]="formulario" (ngSubmit)="calcular()">
+    <div style="display:flex; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
+      <div>
+        <label for="x1">x1</label><br>
+        <input id="x1" type="number" formControlName="x1" step="any">
+      </div>
+
+      <div>
+        <label for="y1">y1</label><br>
+        <input id="y1" type="number" formControlName="y1" step="any">
+      </div>
+
+      <div>
+        <label for="x2">x2</label><br>
+        <input id="x2" type="number" formControlName="x2" step="any">
+      </div>
+
+      <div>
+        <label for="y2">y2</label><br>
+        <input id="y2" type="number" formControlName="y2" step="any">
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <button type="submit" style="padding:8px 16px;">CALCULAR</button>
+    </div>
+  </form>
+
+  <div>
+    <strong>La distancia entre los dos puntos es: </strong>
+    <span>{{ resultado | number:'1.4-4' }}</span>
+  </div>
+</div>
