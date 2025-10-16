@@ -1,0 +1,21 @@
+<div class="container" style="max-width: 400px; margin: 20px auto;">
+  <h2>Multiplicación</h2>
+
+  <form [formGroup]="formulario">
+    <div>
+      <label for="a">Número A:</label>
+      <input id="a" type="number" formControlName="a" class="form-control" />
+    </div>
+
+    <div>
+      <label for="b">Número B:</label>
+      <input id="b" type="number" formControlName="b" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3" (click)="calcular()" >Calcular</button>
+  </form>
+
+  <div *ngIf="resultado !== null" class="alert alert-info mt-3">
+    <strong>Resultado:</strong> {{ resultado }}
+  </div>
+</div>

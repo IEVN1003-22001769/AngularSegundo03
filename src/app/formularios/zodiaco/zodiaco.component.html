@@ -1,0 +1,81 @@
+<div class="container mt-4">
+  <div class="row">
+    <!-- Columna izquierda: formulario -->
+    <div class="col-md-6 border-end bg-light rounded-start p-4">
+      <form [formGroup]="zodiaco.formulario" (ngSubmit)="calcular()" class="p-3" novalidate>
+        <h3 class="text-center text-primary fw-bold mb-4">🐉 Zodiaco Chino 🐉</h3>
+
+        <h5 class="text-center text-secondary mb-3">Datos personales</h5>
+        <div class="row g-2 mb-3">
+          <div class="col-6 col-md-4">
+            <label class="form-label text-primary fw-semibold">Nombre</label>
+            <input class="form-control" formControlName="nombre" type="text" />
+          </div>
+
+          <div class="col-6 col-md-4">
+            <label class="form-label text-primary fw-semibold">Apellido paterno</label>
+            <input class="form-control" formControlName="apaterno" type="text" />
+          </div>
+
+          <div class="col-6 col-md-4">
+            <label class="form-label text-primary fw-semibold">Apellido materno</label>
+            <input class="form-control" formControlName="amaterno" type="text" />
+          </div>
+        </div>
+
+        <h5 class="text-center text-secondary mb-3">Fecha de nacimiento</h5>
+        <div class="row g-2 mb-3">
+          <div class="col-2">
+            <label class="form-label text-primary fw-semibold">Día</label>
+            <input class="form-control" formControlName="dia" type="number" min="1" max="31" />
+          </div>
+          <div class="col-2">
+            <label class="form-label text-primary fw-semibold">Mes</label>
+            <input class="form-control" formControlName="mes" type="number" min="1" max="12" />
+          </div>
+          <div class="col-2">
+            <label class="form-label text-primary fw-semibold">Año</label>
+            <input class="form-control" formControlName="anio" type="number" min="1900" />
+          </div>
+        </div>
+
+        <h5 class="text-center text-secondary mb-3">Sexo</h5>
+        <div class="text-center mb-3">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="sexo" id="sexoM" [value]="'Masculino'" />
+            <label class="form-check-label text-primary fw-semibold" for="sexoM">Masculino</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="sexo" id="sexoF" [value]="'Femenino'" />
+            <label class="form-check-label text-primary fw-semibold" for="sexoF">Femenino</label>
+          </div>
+        </div>
+
+        <div class="text-center mt-3">
+          <button class="btn btn-primary px-4" type="submit">Imprimir</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-6 bg-white d-flex align-items-center justify-content-center rounded-end p-4">
+      <div *ngIf="zodiaco.nombreCompleto" class="w-100">
+        <div class="card shadow-lg border-0 p-4" style="background: linear-gradient(135deg, #b89f9f, #ceb0b0);">
+          <h4 class="text-center text-primary fw-bold mb-3">Usted es este animal</h4>
+          <div class="d-flex align-items-center justify-content-center flex-column text-center">
+            <div
+              style="width:120px; height:120px; display:flex; align-items:center; justify-content:center; border-radius:50%; margin-bottom:10px;">
+              <img *ngIf="zodiaco.imagen" [src]="zodiaco.imagen" [alt]="zodiaco.signo"
+                style="width:120px; height:120px; object-fit:cover; border-radius:50%;">
+            </div>
+            <div class="text-dark">
+              <p><strong>Hola </strong> <span class="fst-italic fw-bold text-primary">{{ zodiaco.nombreCompleto }}</span></p>
+              <p><strong>Sexo:</strong> {{ zodiaco.sexo }}</p>
+              <p><strong>Edad:</strong> {{ zodiaco.edad }}</p>
+              <p><strong>Signo:</strong> {{ zodiaco.signo }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

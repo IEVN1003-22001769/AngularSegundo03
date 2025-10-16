@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { Distancia } from './distancias';
 
 @Component({
   selector: 'app-distancia',
@@ -11,6 +12,8 @@ import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 export class DistanciaComponent implements OnInit {
   formulario!: FormGroup;
   resultado: number = 0; 
+  dist: Distancia = new Distancia();
+  detalle: string = '';
 
   ngOnInit(): void {
     this.formulario = new FormGroup({
@@ -22,11 +25,12 @@ export class DistanciaComponent implements OnInit {
   }
 
   calcular(): void {
-    const { x1, y1, x2, y2 } = this.formulario.value;
-
-    const dx = x2 - x1;
-    const dy = y2 - y1;
-
-    this.resultado = Math.sqrt(dx * dx + dy * dy);
+   
+    this.dist.x1 = this.formulario.get('x1')!.value;
+    this.dist.y1 = this.formulario.get('y1')!.value;
+    this.dist.x2 = this.formulario.get('x2')!.value;
+    this.dist.y2 = this.formulario.get('y2')!.value;
+   
+    this.resultado = this.dist.calcular();
   }
 }
