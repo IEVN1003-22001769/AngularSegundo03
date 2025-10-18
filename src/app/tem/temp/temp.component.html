@@ -1,1 +1,6 @@
 <p>temp works!</p>
+<app-temh [mensaje]="title" (mensaje2)="recibirMensaje($event)" />
+
+<p class="mb-3 text-purple-500 dark:text-purple-400">
+  {{ mensaje2 }}
+</p>
