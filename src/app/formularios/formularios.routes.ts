@@ -11,8 +11,7 @@ export default[
     },
     {
         path:'zodiaco',
-        loadComponent:()=>import("./zodiaco/zodiaco-c").then(c=>c.ZodiacoC)
-    }
+        loadComponent:()=>import("./zodiaco/zodiaco.component").then(c=>c.ZodiacoComponent)    }
 
 
 ]as Routes

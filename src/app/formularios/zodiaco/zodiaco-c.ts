@@ -23,11 +23,7 @@ export class ZodiacoC {
     { nombre: 'Perro', foto: 'https://confuciomag.com/wp-content/uploads/2016/01/06_horoscopo_chino_Perro.jpg' },
     { nombre: 'Cerdo', foto: 'https://confuciomag.com/wp-content/uploads/2016/01/06_horoscopo_chino_Cerdo.jpg' }
   ];
-
-  constructor() {
-    this.initForm();
-  }
-
+  
   initForm(): void {
     this.formulario = new FormGroup({
       nombre: new FormControl(''),
@@ -41,25 +37,37 @@ export class ZodiacoC {
   }
 
   calcular(): void {
-    
-  const { dia = 0, mes = 0, anio = 0, nombre = '', apaterno = '', amaterno = '', sexo = 'Masculino' } = this.formulario.value;
-  const d = Number(dia) || 0;
-  const m = Number(mes) || 0;
-  const a = Number(anio) || 0;
+    const { dia = 0, mes = 0, anio = 0, nombre = '', apaterno = '', amaterno = '', sexo = 'Masculino' } = this.formulario.value;
+    const d = Number(dia) || 0;
+    const m = Number(mes) || 0;
+    const a = Number(anio) || 0;
 
-  const hoy = new Date();
-  let edadCalc = hoy.getFullYear() - a;
-  if (m > 0 && d > 0 && (m > (hoy.getMonth() + 1) || (m === (hoy.getMonth() + 1) && d > hoy.getDate()))) {
-    edadCalc--;
-  }
+    if (a < 1900) {
+      this.nombreCompleto = ''; // lolimpiasiesinvaludo
+      return;
+    }
 
-  const index = ((a - this.baseA) % 12 + 12) % 12;
-  const signoObj = this.signos[index] || this.signos[0];
+//  fecha y hora exactas del dia.
+const hoy = new Date();
+let edadCalc = hoy.getFullYear() - a;
+if (
+  m > 0 &&
+  d > 0 &&
+  (
+    m > hoy.getMonth() + 1 ||
+    (m === hoy.getMonth() + 1 && d > hoy.getDate())
+  )
+) {
+  edadCalc--;
+}
 
-  this.nombreCompleto = `${nombre} ${apaterno} ${amaterno}`.trim();
-  this.sexo = sexo;
-  this.edad = edadCalc;
-  this.signo = signoObj.nombre;
-  this.imagen = signoObj.foto;
-  }
+const index = ((a - this.baseA) % 12 + 12) % 12;
+const signoObj = this.signos[index] || this.signos[0];
+//.trim() quita espacios vacíos que sobren al inicio o al final.
+this.nombreCompleto = `${nombre} ${apaterno} ${amaterno}`.trim();
+this.sexo = sexo;
+this.edad = edadCalc;
+this.signo = signoObj.nombre;
+this.imagen = signoObj.foto;
+}
 }

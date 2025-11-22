@@ -6,7 +6,8 @@ import { Operaseon } from './operaseon';
 @Component({
   selector: 'app-axb',
   imports: [CommonModule,ReactiveFormsModule],
-  templateUrl: './axb.component.html'
+  templateUrl: './axb.component.html',
+  styleUrls: ['./axb.component.css']
 })
 export class AxbComponent {
  
@@ -23,14 +24,11 @@ export class AxbComponent {
 
   calcular(): void {
     if (this.formulario.invalid) return;
-
     this.op.chido(
       Number(this.formulario.get('a')!.value),
       Number(this.formulario.get('b')!.value)
     );
-
     this.resultado = this.op.multiplicar();
-
   }
 
 

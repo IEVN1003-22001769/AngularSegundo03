@@ -20,4 +20,6 @@ export class ZodiacoComponent implements OnInit {
   calcular(): void {
     this.zodiaco.calcular();
   }
+
+  
 }

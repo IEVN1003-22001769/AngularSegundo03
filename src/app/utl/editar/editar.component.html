@@ -1,1 +1,88 @@
-<p>editar works!</p>
+<div class="edit-container">
+  <div class="form-card">
+    <div class="form-header">
+      <h3>Editar Alumno</h3>
+      <p>Modifica la información del estudiante</p>
+    </div>
+    
+    <form (ngSubmit)="modificar()" class="form-body">
+      
+      <div class="form-group">
+        <label for="matricula">Matrícula</label>
+        <input
+          type="number"
+          id="matricula"
+          name="matricula"
+          [(ngModel)]="regAlumno.matricula"
+          readonly
+          class="input-readonly"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          [(ngModel)]="regAlumno.nombre"
+          class="input-field"
+          required
+        />
+      </div>
+
+      <div class="row-group">
+        <div class="form-group">
+          <label for="apaterno">Apellido Paterno</label>
+          <input
+            type="text"
+            id="apaterno"
+            name="apaterno"
+            [(ngModel)]="regAlumno.apaterno"
+            class="input-field"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="amaterno">Apellido Materno</label>
+          <input
+            type="text"
+            id="amaterno"
+            name="amaterno"
+            [(ngModel)]="regAlumno.amaterno"
+            class="input-field"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="correo">Correo Electrónico</label>
+        <input
+          type="email"
+          id="correo"
+          name="correo"
+          [(ngModel)]="regAlumno.correo"
+          class="input-field"
+          required
+        />
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="button"
+          class="btn-cancel"
+          [routerLink]="['/utl/listaalumnos']"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="btn-save"
+        >
+          Guardar Cambios
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

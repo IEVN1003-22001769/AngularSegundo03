@@ -9,7 +9,4 @@ export class Distancia {
     const a = Number(this.x1), b = Number(this.y1), c = Number(this.x2), d = Number(this.y2);
     return Math.hypot(c - a, d - b);
   }
-
-
-  
 }

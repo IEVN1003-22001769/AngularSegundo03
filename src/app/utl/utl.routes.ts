@@ -1,22 +1,22 @@
 import { Routes } from "@angular/router";
 
-export default[
+export default [
     {
-        path:'agregar',
-        loadComponent:()=>import("./agregar/agregar.component").then(c=>c.AgregarComponent)
+        path: 'agregar',
+        loadComponent: () => import("./agregar/agregar.component").then(c => c.AgregarComponent)
     },
     {
-        path:'listaalumnos',
-        loadComponent:()=>import("./alumnos/alumnos.component").then(c=>c.AlumnosComponent)
+        path: 'listaalumnos',
+        loadComponent: () => import("./alumnos/alumnos.component").then(c => c.AlumnosComponent)
     },
     {
-        path:'editar',
-        loadComponent:()=>import("./editar/editar.component").then(c=>c.EditarComponent)
+        // C:id para recibir la matrícula
+        path: 'editar/:id',
+        loadComponent: () => import("./editar/editar.component").then(c => c.EditarComponent)
     },
     {
-        path:'eliminar',
-        loadComponent:()=>import("./eliminar/eliminar.component").then(c=>c.EliminarComponent)
+
+        path: 'eliminar/:id', 
+        loadComponent: () => import("./eliminar/eliminar.component").then(c => c.EliminarComponent)
     }
-
-
-]as Routes
+] as Routes;

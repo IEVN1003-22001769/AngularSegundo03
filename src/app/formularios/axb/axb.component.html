@@ -1,21 +1,36 @@
-<div class="container" style="max-width: 400px; margin: 20px auto;">
-  <h2>Multiplicación</h2>
+<div class="axb-container">
+  <h2 class="form-title">Multiplicación</h2>
 
-  <form [formGroup]="formulario">
-    <div>
-      <label for="a">Número A:</label>
-      <input id="a" type="number" formControlName="a" class="form-control" />
+  <form [formGroup]="formulario" (ngSubmit)="calcular()" class="axb-form">
+    
+    <div class="form-group">
+      <label for="a" class="form-label">Número A:</label>
+      <input 
+        id="a" 
+        type="number" 
+        formControlName="a" 
+        class="form-input" 
+        placeholder="Ingrese valor"
+      />
     </div>
 
-    <div>
-      <label for="b">Número B:</label>
-      <input id="b" type="number" formControlName="b" class="form-control" />
+    <div class="form-group">
+      <label for="b" class="form-label">Número B:</label>
+      <input 
+        id="b" 
+        type="number" 
+        formControlName="b" 
+        class="form-input" 
+        placeholder="Ingrese valor"
+      />
     </div>
 
-    <button type="submit" class="btn btn-primary mt-3" (click)="calcular()" >Calcular</button>
+    <div class="button-container">
+      <button type="submit" class="submit-btn">Calcular</button>
+    </div>
   </form>
 
-  <div *ngIf="resultado !== null" class="alert alert-info mt-3">
+  <div *ngIf="resultado !== null" class="result-display">
     <strong>Resultado:</strong> {{ resultado }}
   </div>
 </div>

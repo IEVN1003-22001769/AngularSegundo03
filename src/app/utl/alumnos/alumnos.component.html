@@ -1,1 +1,74 @@
-<p>alumnos works!</p>
+<div class="main-container">
+  <div class="card-custom">
+    <div class="card-header-custom">
+      <div class="header-content">
+        <h2>{{ alumnoTitle }}</h2>
+        <button
+          class="btn-add"
+          [routerLink]="['/utl/agregar']"
+        >
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14"/>
+          </svg>
+          Nuevo Alumno
+        </button>
+      </div>
+    </div>
+    
+    <div class="card-body-custom">
+      <div class="filter-section">
+        <label>Filtrar por nombre:</label>
+        <input
+          [(ngModel)]="listFilter"
+          class="input-filter"
+          type="text"
+          placeholder="Escribe para buscar..."
+        />
+      </div>
+      <div class="filter-status" *ngIf="listFilter">
+        <p>Buscando: <strong>{{ listFilter }}</strong></p>
+      </div>
+
+      <div class="table-container">
+        <table class="table-custom" *ngIf="dataSource.alumnos && dataSource.alumnos.length > 0">
+          <thead>
+            <tr>
+              <th>Matrícula</th>
+              <th>Nombre Completo</th>
+              <th>Correo</th>
+              <th class="text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let alumno of dataSource.alumnos | alumnoFilter : listFilter">
+              <td class="fw-bold">{{ alumno.matricula }}</td>
+              <td>{{ alumno.nombre | uppercase }} {{ alumno.apaterno }} {{ alumno.amaterno }}</td>
+              <td>{{ alumno.correo }}</td>
+              <td class="actions-cell">
+                <button
+                  class="btn-icon btn-edit"
+                  [routerLink]="['/utl/editar', alumno.matricula]"
+                  title="Editar"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                </button>
+
+                <button
+                  class="btn-icon btn-delete"
+                  (click)="eliminarAlumno(alumno.matricula)"
+                  title="Eliminar"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div *ngIf="!dataSource || !dataSource.alumnos || dataSource.alumnos.length === 0" class="empty-state">
+          <p>No hay alumnos registrados o no se pudo conectar a la API.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

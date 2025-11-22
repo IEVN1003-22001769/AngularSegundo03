@@ -1,93 +1,12 @@
-<div class="zodiac-container">
-  <div class="zodiac-layout">
-
-    <!-- Columna izquierda: formulario -->
-    <div class="form-column">
-      <form [formGroup]="zodiaco.formulario" class="zodiac-form" novalidate>
-        <h3 class="form-title">🐉 Zodiaco Chino 🐉</h3>
-
-        <h5 class="form-subtitle">Datos personales</h5>
-        <div class="form-row">
-          <div class="form-group fg-30">
-            <label class="form-label">Nombre</label>
-            <input class="form-input" formControlName="nombre" type="text" />
-          </div>
-          <div class="form-group fg-30">
-            <label class="form-label">Apellido paterno</label>
-            <input class="form-input" formControlName="apaterno" type="text" />
-          </div>
-          <div class="form-group fg-30">
-            <label class="form-label">Apellido materno</label>
-            <input class="form-input" formControlName="amaterno" type="text" />
-          </div>
-        </div>
-
-        <h5 class="form-subtitle">Fecha de nacimiento</h5>
-        <div class="form-row">
-          <div class="form-group fg-20">
-            <label class="form-label">Día</label>
-            <input class="form-input" formControlName="dia" type="number" min="1" max="31" />
-          </div>
-          <div class="form-group fg-20">
-            <label class="form-label">Mes</label>
-            <input class="form-input" formControlName="mes" type="number" min="1" max="12" />
-          </div>
-          <div class="form-group fg-25">
-            <label class="form-label">Año</label>
-            <input class="form-input" formControlName="anio" type="number" min="1900" />
-          </div>
-        </div>
-
-        <h5 class="form-subtitle">Sexo</h5>
-        <div class="radio-group">
-          <div class="radio-item">
-            <input class="radio-input" type="radio" formControlName="sexo" id="sexoM" [value]="'Masculino'" />
-            <label class="radio-label" for="sexoM">Masculino</label>
-          </div>
-          <div class="radio-item">
-            <input class="radio-input" type="radio" formControlName="sexo" id="sexoF" [value]="'Femenino'" />
-            <label class="radio-label" for="sexoF">Femenino</label>
-          </div>
-        </div>
-
-        <div class="button-container">
-          <button class="submit-btn" type="submit" (click)="calcular()">Ve tu futuro</button>
-        </div>
-      </form>
-    </div>
-    
-    <!-- Columna derecha: resultados -->
-    <div class="result-column">
-      <div *ngIf="zodiaco.nombreCompleto" class="result-card-wrapper">
-        <div class="result-card">
-          <h4 class="result-title">Usted es este animal</h4>
-          <div class="result-content">
-            <div class="result-image-wrapper">
-              <img *ngIf="zodiaco.imagen" [src]="zodiaco.imagen" [alt]="zodiaco.signo" class="result-image">
-            </div>
-            <div class="result-text">
-              <p><strong>Hola </strong> <span class="highlight-name">{{ zodiaco.nombreCompleto }}</span></p>
-              <p><strong>Sexo:</strong> {{ zodiaco.sexo }}</p>
-              <p><strong>Edad:</strong> {{ zodiaco.edad }}</p>
-              <p><strong>Signo:</strong> {{ zodiaco.signo }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-<style>
-  :host {
-  --primary-color: #0056b3; 
+:host {
+  --primary-color: #0056b3; /* Un azul más profesional */
   --primary-color-dark: #004085;
   --light-bg: #f8f9fa;
   --text-color: #333;
   --text-secondary: #555;
   --border-color: #dee2e6;
   --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --card-gradient: linear-gradient(135deg, #f5f7fa, #c3cfe2); 
+  --card-gradient: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Gradiente sutil */
 }
 
 /* Contenedor principal */
@@ -347,5 +266,3 @@
   }
 }
 
-
-</style>

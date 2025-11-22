@@ -1,0 +1,114 @@
+.edit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background-color: #f3f4f6;
+    padding: 1rem;
+}
+
+.form-card {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 16px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.form-header {
+    background-color: #eb2525;
+    padding: 2rem;
+    text-align: center;
+    color: white;
+}
+
+.form-header h3 {
+    margin: 0;
+    font-size: 1.75rem;
+}
+
+.form-header p {
+    margin: 0.5rem 0 0;
+    opacity: 0.8;
+}
+
+.form-body {
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.row-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 640px) {
+    .row-group { grid-template-columns: 1fr; }
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #374151;
+    font-size: 0.9rem;
+}
+
+.input-field, .input-readonly {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+    box-sizing: border-box; /* Importante para padding */
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #eb2525;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input-readonly {
+    background-color: #f3f4f6;
+    color: #6b7280;
+    cursor: not-allowed;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1.5rem;
+}
+
+.btn-save, .btn-cancel {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    font-size: 0.95rem;
+}
+
+.btn-save {
+    background-color: #eb2525;
+    color: white;
+}
+
+.btn-save:hover { background-color: #eb2525; }
+
+.btn-cancel {
+    background-color: #9ca3af;
+    color: white;
+}
+
+.btn-cancel:hover { background-color: #6b7280; }

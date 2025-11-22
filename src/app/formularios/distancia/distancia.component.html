@@ -1,23 +1,39 @@
-<div style="max-width:800px; margin:20px auto; font-family:Arial, sans-serif;">
-  <h2>Distancia entre dos puntos</h2>
+<div class="distancia-container">
+  <h2 class="form-title">Distancia entre dos puntos</h2>
 
-  <form [formGroup]="formulario" >
-  <label for="x1">x1</label>
-  <input id="x1" formControlName="x1" type="number" />
+  <form [formGroup]="formulario" (ngSubmit)="calcular()" class="distancia-form">
+    
+    <div class="coordinates-grid">
+      
+      <div class="form-group">
+        <label for="x1" class="form-label">Coordenada X1</label>
+        <input id="x1" formControlName="x1" type="number" class="form-input" placeholder="0" />
+      </div>
 
-  <label for="y1">y1</label>
-  <input id="y1" formControlName="y1" type="number" />
+      <div class="form-group">
+        <label for="y1" class="form-label">Coordenada Y1</label>
+        <input id="y1" formControlName="y1" type="number" class="form-input" placeholder="0" />
+      </div>
 
-  <label for="x2">x2</label>
-  <input id="x2" formControlName="x2" type="number" />
+      <div class="form-group">
+        <label for="x2" class="form-label">Coordenada X2</label>
+        <input id="x2" formControlName="x2" type="number" class="form-input" placeholder="0" />
+      </div>
 
-  <label for="y2">y2</label>
-  <input id="y2" formControlName="y2" type="number" />
-  <button (click)="calcular()" type="submit">Calcular</button>
-</form>
+      <div class="form-group">
+        <label for="y2" class="form-label">Coordenada Y2</label>
+        <input id="y2" formControlName="y2" type="number" class="form-input" placeholder="0" />
+      </div>
+      
+    </div>
 
-<p>Resultado: {{ resultado }}</p>
+    <button type="submit" class="submit-btn">
+      Calcular Distancia
+    </button>
+  </form>
 
-
-
+  <div *ngIf="resultado" class="result-display">
+    <span class="result-label">Resultado:</span>
+    <span class="result-value">{{ resultado }}</span>
+  </div>
 </div>

@@ -7,7 +7,8 @@ import { Distancia } from './distancias';
   selector: 'app-distancia',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './distancia.component.html'
+  templateUrl: './distancia.component.html',
+  styleUrls: ['./distancia.component.css']
 })
 export class DistanciaComponent implements OnInit {
   formulario!: FormGroup;
